@@ -4,7 +4,6 @@ from sklearn.manifold import TSNE
 import matplotlib.pyplot as plt
 
 
-
 def visualize(model_checkpoint: str, figure_name: str = "embeddings") -> None:
     """Visualize the training statistics."""
     model = torch.load(model_checkpoint)
@@ -30,7 +29,6 @@ def visualize(model_checkpoint: str, figure_name: str = "embeddings") -> None:
 
     embeddings = TSNE(n_components=2).fit_transform(embeddings)
 
-    
     plt.figure(figsize=(10, 10))
     for i in range(10):
         indices = targets == i
@@ -40,8 +38,5 @@ def visualize(model_checkpoint: str, figure_name: str = "embeddings") -> None:
     print("Visualization complete")
 
 
-
 if __name__ == "__main__":
     typer.run(visualize)
-    
-    

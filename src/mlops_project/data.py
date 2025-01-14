@@ -5,14 +5,16 @@ import typer
 RAW_DATA_PATH = "data/raw"
 PROCESSED_DATA_PATH = "data/processed"
 
+
 def normalize(images: torch.Tensor):
     """Normalize to mean 0 and std 1."""
     return (images - images.mean()) / images.std()
 
+
 def pre_process_mnist(raw_path: str = RAW_DATA_PATH, processed_path: str = PROCESSED_DATA_PATH):
     """Return train and test dataloaders for corrupt MNIST."""
     # exchange with the corrupted mnist dataset
-    
+
     # Load the training images and targets from the 6 files
     train_images, train_target = [], []
     for i in range(6):
@@ -46,6 +48,7 @@ def pre_process_mnist(raw_path: str = RAW_DATA_PATH, processed_path: str = PROCE
     torch.save(test_target, f"{PROCESSED_DATA_PATH}/test_target.pt")
 
     return train, test
+
 
 def corrupt_mnist():
     "Load the processed corrupted MNIST datasets."
